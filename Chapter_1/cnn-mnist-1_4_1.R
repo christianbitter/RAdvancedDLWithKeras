@@ -69,7 +69,7 @@ model %>%
 
 summary(model);
 
-# plot_model(model, to_file='cnn-mnist.png', show_shapes=True)
+# plot(model, to_file='cnn-mnist.png', show_shapes=True)
 
 # loss function for one-hot vector
 # use of adam optimizer
