@@ -50,7 +50,7 @@ summary(model);
 # accuracy is good metric for classification tasks
 model %>% compile(loss = 'categorical_crossentropy',
                   optimizer = 'sgd',
-                  metrics = c('accuracy'));
+                  metrics = list('accuracy'));
 
 # train the network
 model %>% fit(x_train, y_train, epochs = 20, batch_size = batch_size);

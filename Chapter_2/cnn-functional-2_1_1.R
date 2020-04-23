@@ -42,11 +42,14 @@ dropout     <- 0.3
 
 # use functional API to build cnn layers
 inputs <- keras::layer_input(shape = input_shape);
-y <- inputs %>% keras::layer_conv_2d(filters = filters, kernel_size = kernel_size, activation = 'relu');
+y <- inputs %>% keras::layer_conv_2d(filters = filters, kernel_size = kernel_size,
+                                     activation = 'relu');
 y <- y %>% keras::layer_max_pooling_2d();
-y <- y %>% keras::layer_conv_2d(filters = filters, kernel_size = kernel_size, activation = 'relu');
+y <- y %>% keras::layer_conv_2d(filters = filters, kernel_size = kernel_size,
+                                activation = 'relu');
 y <- y %>% keras::layer_max_pooling_2d();
-y <- y %>% keras::layer_conv_2d(filters = filters, kernel_size = kernel_size, activation = 'relu');
+y <- y %>% keras::layer_conv_2d(filters = filters, kernel_size = kernel_size,
+                                activation = 'relu');
 
 # image to vector before connecting to dense layer
 y <- y %>% keras::layer_flatten();
@@ -63,7 +66,7 @@ summary(model);
 # classifier loss, Adam optimizer, classifier accuracy
 model %>% compile(loss = 'categorical_crossentropy', 
                   optimizer = keras::optimizer_adam(),
-                  metrics = c('accuracy'));
+                  metrics = list('accuracy'));
 
 # train the model with input images and labels
 model %>% keras::fit(x_train, y_train, 

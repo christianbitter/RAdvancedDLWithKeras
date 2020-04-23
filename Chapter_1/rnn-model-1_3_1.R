@@ -15,10 +15,11 @@ n_activities <- 5
 model <- keras::keras_model_sequential();
 # RNN with dropout
 model %>% 
-  keras::layer_simple_rnn(units = units, dropout = 0.2, input_shape = c(timesteps, input_dim)) %>%
+  keras::layer_simple_rnn(units = units, dropout = 0.2, 
+                          input_shape = c(timesteps, input_dim)) %>%
   keras::layer_dense(units = n_activities, activation = 'softmax')
 
 model %>% keras::compile(loss = "categorical_crossentropy",
                          optimizer = keras::optimizer_adam(),
-                         metrics = c('accuracy'));
+                         metrics = list('accuracy'));
 summary(model)

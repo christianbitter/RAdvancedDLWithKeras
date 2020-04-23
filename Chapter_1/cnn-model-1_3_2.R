@@ -12,15 +12,16 @@ n_digits <- 10;
 model <- keras::keras_model_sequential();
 
 model %>%
-  keras::layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = 'relu', strides = 2,
-                       input_shape = c(28, 28, 1), padding='same') %>%
-  keras::layer_conv_2d(filters = 128, kernel_size = c(3, 3), activation='relu', strides=2) %>%
+  keras::layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = 'relu'
+                       strides = 2, input_shape = c(28, 28, 1), padding='same') %>%
+  keras::layer_conv_2d(filters = 128, kernel_size = c(3, 3), activation='relu',
+                       strides=2) %>%
   keras::layer_flatten() %>%
   keras::layer_dense(n_digits, activation='softmax');
 
 model %>% 
   keras::compile(loss='categorical_crossentropy',
                  optimizer = keras::optimizer_rmsprop(),
-                 metrics = c('accuracy'));
+                 metrics = list('accuracy'));
 
 summary(model);

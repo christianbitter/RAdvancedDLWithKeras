@@ -47,7 +47,8 @@ filters     <- n_filters;
 # 3 layers of Conv2D-Dropout-MaxPooling2D
 # number of filters doubles after each layer (32-64-128)
 for (i in seq(1, 3)) {
-  x <- x %>% keras::layer_conv_2d(filters=filters, kernel_size=kernel_size, padding='same', activation='relu');
+  x <- x %>% keras::layer_conv_2d(filters = filters, kernel_size = kernel_size,
+                                  padding = 'same', activation = 'relu');
   x <- x %>% keras::layer_dropout(dropout);
   x <- x %>% keras::layer_max_pooling_2d();
   filters <- filters * 2;
@@ -86,7 +87,7 @@ summary(model);
 # classifier loss, Adam optimizer, classifier accuracy
 model %>% keras::compile(loss = 'categorical_crossentropy',
                          optimizer = 'adam',
-                         metrics = c('accuracy'));
+                         metrics = list('accuracy'));
 
 # train the model with input images and labels
 model %>% keras::fit(list(x_train, x_train), y_train,

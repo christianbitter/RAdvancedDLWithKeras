@@ -62,7 +62,7 @@ summary(model)
 # accuracy is good metric for classification tasks
 model %>% keras::compile(loss = 'categorical_crossentropy',
                          optimizer = 'adam',
-                         metrics = c('accuracy'));
+                         metrics = list('accuracy'));
 # train the network
 model %>% keras::fit(x_train, y_train, epochs = 20, batch_size = batch_size);
 
