@@ -8,6 +8,7 @@
 # [b] Identity Mappings in Deep Residual Networks
 # https://arxiv.org/pdf/1603.05027.pdf
 # https://github.com/PacktPublishing/Advanced-Deep-Learning-with-Keras/blob/master/chapter2-deep-networks/resnet-cifar10-2.2.1.py
+# .rs.restartR();
 
 rm(list = ls());
 
